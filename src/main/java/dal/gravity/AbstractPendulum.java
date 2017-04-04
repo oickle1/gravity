@@ -12,14 +12,14 @@ public abstract class AbstractPendulum {
 	 */
 	private double stringLength, pointMass;
 	protected double theta0;
-	protected double g;
+	protected GravityModel g;
 
 	/**
 	 * Creates a new Pendulum instance using inLength: the string length (>0)
 	 * inMass: the point mass (>0) inTheta0: angular displacement at t=0
 	 * (0<=theta0) inG: gravitational field value to use
 	 */
-	public AbstractPendulum(double inLength, double inMass, double inTheta0, double inG) {
+	public AbstractPendulum(double inLength, double inMass, double inTheta0, GravityModel inG) {
 		if (validStringLength(inLength))
 			stringLength = inLength;
 		else
@@ -50,8 +50,8 @@ public abstract class AbstractPendulum {
 		return (val > 0);
 	}
 
-	private boolean validGC(double val) {
-		return (val >= 0);
+	private boolean validGC(GravityModel val) {
+		return (val.getGravitationalField() >= 0);
 	}
 
 	public double getMaxAngularDisplacement() {
@@ -67,7 +67,7 @@ public abstract class AbstractPendulum {
 	}
 
 	public double getGravitationalField() {
-		return g;
+		return g.getGravitationalField();
 	}
 
 }

@@ -6,7 +6,10 @@ package dal.gravity;
 public class SimplePendulum extends AbstractPendulum {
 
 	private double angularFrequency, periodOfMotion;
-	public final static double GRAVITY = 9.80665;
+	
+	//changed this type to GravityConstant, needs to be passed in to the 
+	//AbstractPendulum, so we need it to be of type GravityModel
+	public final static GravityConstant GRAVITY = new GravityConstant(9.80665);
 	
 	/**
 	 * Creates a new Pendulum instance using inLength: the string length (>0)
